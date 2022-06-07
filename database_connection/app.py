@@ -30,8 +30,8 @@ def lambda_handler(event, context):
 
     with conn.cursor() as cur:
         # cur.execute("drop table TblSupplier")
-        # cur.execute(
-        #     "create table TblSupplier(SuplierProductID varchar(25),productName varchar(50),productDescription varchar(50),productDetails varchar(50),productFeatured bool,productPrice int)")
+        cur.execute(
+            "create table TblSupplier(SuplierProductID varchar(25),productName varchar(50),productDescription varchar(50),productDetails varchar(50),productFeatured bool,productPrice int)")
         cur.execute('insert into TblSupplier  values("MZ123123", "Unstitch Cloths","This is best Product","Wholesale product",TRUE ,800)')
         conn.commit()
         cur.execute("select * from TblSupplier")
