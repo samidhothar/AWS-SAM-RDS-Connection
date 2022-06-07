@@ -1,0 +1,5 @@
+simplejson
+requests
+pymysql
+boto3
+Pillow

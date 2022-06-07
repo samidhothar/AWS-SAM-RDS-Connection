@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  database_application_AWS
+
+Globals:
+  Function:
+    Timeout: 300
+
+Resources:
+
+  DependenciesLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: 'requirements/'
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+
+  DatabaseConnection:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: database_connection/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Role: arn:aws:iam::900599119079:role/RDS_Lambda_demo_role
+      Layers:
+        - !Ref DependenciesLayer
+
+      VpcConfig:
+        SecurityGroupIds:
+          - "sg-06e0a4328a79d652a"
+        SubnetIds:
+          - "subnet-0198d3122a596faf6"
+          - "subnet-06e6a1b522a141618"
+          - "subnet-00c6eff279f1ccc99"

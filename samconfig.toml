@@ -1,0 +1,12 @@
+version = 0.1
+[default.build.parameters]
+cache_dir="/tmp/.aws-sam/cache"
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "database-connection"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-e3sekf3yilxt"
+s3_prefix = "database-connection"
+region = "ap-southeast-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
